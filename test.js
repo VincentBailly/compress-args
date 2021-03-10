@@ -64,8 +64,19 @@ try {
   assertEqual(compressArgs(["catfish"]), "catfish");
 
   console.log("- It correctly compress two unrelated args");
-  assertEqual(compressArgs(["cat", "fish"]), "{cat,fish}")
-} catch {
+  assertEqual(compressArgs(["cat", "fish"]), "{cat,fish}");
+
+  console.log("- It correctly compress two strings with the same prefix");
+  assertEqual(compressArgs(["foo-bar", "foo-baz"]), "foo-ba{r,z}");
+
+  console.log("- It correctly compress two strings with one being a substring of the other");
+  assertEqual(compressArgs(["foo-ba", "foo-baz"]), "foo-ba{,z}");
+
+  console.log("- It correctly compress the strings with two being similar and a third being different");
+  assertEqual(compressArgs(["foo-bar", "foo-baz", "cat"]), "{foo-ba{r,z},cat}");
+
+} catch (e) {
+  throw e
   console.error("Test failed.");
   process.exit(1);
 }
