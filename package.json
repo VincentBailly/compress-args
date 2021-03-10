@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Compress a set of args into a single arg with curly braces.",
   "main": "./index.js",
+  "repository": { "url": "https://github.com/VincentBailly/compress-args"},
   "types": "./index.d.ts",
   "scripts": {
     "test": "node test.js"
