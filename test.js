@@ -1,5 +1,11 @@
 const { compressArgs } = require(".");
 
+const assertEqual = (a1, a2) => {
+  if (a1 !== a2) {
+      throw new Error("Test failed.");
+  }
+}
+
 const throws = (func) => {
   let threw = false;
   try {
@@ -13,7 +19,7 @@ const throws = (func) => {
 };
 
 try {
-    
+
   console.log("- compressArgs is a function");
   if (typeof compressArgs !== "function") {
     throw new Error("");
@@ -53,6 +59,12 @@ try {
     "- It should fail when called with an array array having something else than strings."
   );
   throws(() => compressArgs(["hello", { world: "!" }]));
+
+  console.log("- It returns the input when only one arg is passed");
+  assertEqual(compressArgs(["catfish"]), "catfish");
+
+  console.log("- It correctly compress two unrelated args");
+  assertEqual(compressArgs(["cat", "fish"]), "{cat,fish}")
 } catch {
   console.error("Test failed.");
   process.exit(1);
