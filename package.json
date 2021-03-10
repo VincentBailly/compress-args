@@ -1,0 +1,12 @@
+{
+  "name": "compress-args",
+  "version": "1.0.0",
+  "description": "Compress a set of args into a single arg with curly braces.",
+  "main": "./index.js",
+  "types": "./index.d.ts",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "author": "vincent.bailly@microsoft.com",
+  "license": "MIT"
+}
